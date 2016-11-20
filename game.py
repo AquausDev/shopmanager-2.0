@@ -1,5 +1,6 @@
 class VariableHandling():
-    """Runs the init and mangement of variables"""    
+    """Runs the init and mangement of variables"""
+    @staticmethod
     def init_varibles():
         global username
         username = input("What is your name? ")
@@ -9,6 +10,7 @@ class GeneralFunctions():
 
 class GameManagement():
     """Runs the management of the game"""
+    @staticmethod
     def run_game():
         VariableHandling.init_varibles()
 
