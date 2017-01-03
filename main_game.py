@@ -8,7 +8,7 @@ class VariableHandling():
         username = input("What is your name? ")
 
 class GeneralFunctions():
-    """Runs the functions that control the game"""
+    """Runs the functions that control the game."""
     @staticmethod
     def first_check():
         local_dir = cwd + "first_time.check"
