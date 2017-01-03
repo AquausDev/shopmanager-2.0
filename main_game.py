@@ -1,12 +1,13 @@
-import os, sys
+import os, sys, time
 
 class VariableHandling():
     def init_varibles():
-        global username, yes_list, no_list
+        global username, yes_list, no_list, day
         username = input("What is your name? ")
 
         yes_list = ["yes", "y"]
         no_list = ["no", "n"]
+        day = 1
 
 class GeneralFunctions():
     def start_up():
@@ -30,11 +31,19 @@ class GeneralFunctions():
         global cwd
         cwd = os.getcwd()
         cwd += "\Data"
+
+    def day_management():
+        global day
+        print("Day " + str(day) + "\n")
+        day += 1
         
 class GameManagement():
     def run_game():
         VariableHandling.init_varibles()
         DataHandling.autosave_data()
+        
+        #while True:
+        GeneralFunctions.day_management()
 
 class DataHandling():
     def data_to_save():
