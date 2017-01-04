@@ -2,12 +2,10 @@ import os, sys, time
 
 class VariableHandling():
     def init_varibles():
-        global username, yes_list, no_list, day
         username = input("What is your name? ")
-
-        yes_list = ["yes", "y"]
-        no_list = ["no", "n"]
         day = 1
+
+        return username, day
 
 class GeneralFunctions():
     def start_up():
@@ -28,12 +26,11 @@ class GeneralFunctions():
             sys.exit
             
     def handle_file_loc():
-        global cwd
         cwd = os.getcwd()
         cwd += "\Data"
+        return cwd
 
     def day_management():
-        global day
         print("Day " + str(day) + "\n")
         day += 1
         
@@ -46,28 +43,23 @@ class GameManagement():
         GeneralFunctions.day_management()
 
 class DataHandling():
-    def data_to_save():
-        global file
-        file.write(username)
+    def data_to_save(filename):
+        filename.write(username)
         
     def save_data():
-        global username, cwd, file
         #rechecks the current working directory
-        GeneralFunctions.handle_file_loc()
-        save_cwd = cwd + "\Saves\ "+ username.lower() + ".sav"
+        save_cwd = GeneralFunctions.handle_file_loc() + "\Saves\ "+ username.lower() + ".sav"
         file = open(save_cwd, "w")
         #data store
-        DataHandling.data_to_save()
+        DataHandling.data_to_save(file)
         file.close()
 
     def autosave_data():
-        global username, cwd, file
         #rechecks the current working directory
-        GeneralFunctions.handle_file_loc()
-        save_cwd = cwd + "\Saves\ "+ username.lower() + "_autosave.sav"
+        save_cwd = GeneralFunctions.handle_file_loc() + "\Saves\ "+ username.lower() + "_autosave.sav"
         file = open(save_cwd, "w")
         #data store
-        DataHandling.data_to_save()
+        DataHandling.data_to_save(file)
         file.close()
         
     def load_data():
