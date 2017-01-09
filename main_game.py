@@ -5,11 +5,11 @@ class VariableHandling():
         username = input("What is your name? ")
         day = 1
 
-        return username, day
+        return username
 
 class GeneralFunctions():
     def start_up():
-        start = input("Welcome to Shop Manager. What would you like to do out of the following:\n1. Start a Game\n2. Load a Game\n3. Play Tutorial\n4. Exit Game\n")
+        start = input("Welcome to Shop Manager. What would you like to do out of the following:\n 1. Start a Game\n 2. Load a Game\n 3. Play Tutorial\n 4. Exit Game\n> ")
         
         if start.lower() in ["1", "start", "start a game"]:
             print("Starting Game...\n")
@@ -47,23 +47,25 @@ class DataHandling():
         filename.write(username)
         
     def save_data():
-        #rechecks the current working directory
-        save_cwd = GeneralFunctions.handle_file_loc() + "\Saves\ "+ username.lower() + ".sav"
+        ask_sav = input("Would you like to save your game? ")
+        if ask_sav.lower() in ["yes", "y"]:
+            save_cwd = GeneralFunctions.handle_file_loc() + "\Saves\ "+ username.lower() + ".sav"
+            print("Game saved.")
+        else:
+            print("Game not saved.")
+            
         file = open(save_cwd, "w")
-        #data store
         DataHandling.data_to_save(file)
         file.close()
 
     def autosave_data():
-        #rechecks the current working directory
         save_cwd = GeneralFunctions.handle_file_loc() + "\Saves\ "+ username.lower() + "_autosave.sav"
         file = open(save_cwd, "w")
-        #data store
         DataHandling.data_to_save(file)
         file.close()
         
     def load_data():
-        #rechecks the current working directory
+        #TODO: depricated, rewrite
         GeneralFunctions.handle_file_loc()  
         save_cwd = cwd + "\Saves"
         save_name = username.lower()
