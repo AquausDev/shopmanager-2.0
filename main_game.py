@@ -65,9 +65,11 @@ class DataHandling():
         file.close()
         
     def load_data():
-        #TODO: depricated, rewrite
-        GeneralFunctions.handle_file_loc()  
-        save_cwd = cwd + "\Saves"
-        save_name = username.lower()
+        #TODO: check if game is already running to see username?
+        load_cwd = GeneralFunctions.handle_file_loc() + "\Saves\ "+ username.lower() + "_save.sav"  
+        file = open(load_cwd, "r")
+        #TODO: add data to load
+        print(line)
+        file.close()
         
 GeneralFunctions.start_up()
